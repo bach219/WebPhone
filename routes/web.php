@@ -12,10 +12,14 @@
 */
 
 Route::get('/', 'FrontendController@getHome');
+Route::get('shop', 'FrontendController@getShop');
 Route::get('detail/{id}/{slug}.html', 'FrontendController@getDetail');
 Route::post('detail/{id}/{slug}.html', 'FrontendController@postComment');
 Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
 Route::get('search', 'FrontendController@getSearch');
+Route::get('contact', 'FrontendController@getContact');
+Route::get('blog', 'FrontendController@getBlog');
+Route::get('about', 'FrontendController@getAbout');
 
 Route::group(['prefix' => 'cart'], function(){
   Route::get('add/{id}','CartController@getAddCart');
@@ -59,8 +63,6 @@ Route::group(['namespace'=>'Admin'], function(){
           }); 
           
           Route::group(['prefix'=>'user'], function(){
-                   Route::get('users-list', 'UserController@usersList'); 
-              
                    Route::get('/', 'UserController@getUser');
                    Route::post('/', 'UserController@postUser');
        

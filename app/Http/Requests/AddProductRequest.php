@@ -25,7 +25,15 @@ class AddProductRequest extends FormRequest
     {
         return [
             //
-            'img'=>'image'
+            'img'=>'image',
+            'name'=>'unique:vp_products,prod_name'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            //
+            'name.unique'=>'Tên sản phẩm đã bị trùng!'
         ];
     }
 }

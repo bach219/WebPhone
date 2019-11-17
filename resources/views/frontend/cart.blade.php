@@ -1,84 +1,94 @@
 @extends('frontend.master')
-@section('title', 'Home')	
+@section('title', 'Giỏ Hàng')	
 @section('main')
 <script>
-    function updateCart(qty,rowId){
-       $.get('{{asset('cart/update')}}',
-       {qty:qty,rowId:rowId},
-       function(){
-           location.reload();
-       });
+    function updateCart(qty, rowId){
+    $.get('{{asset('cart/update')}}',
+    {qty:qty, rowId:rowId},
+            function(){
+            location.reload();
+            });
     }
 </script>
-<div id="wrap-inner">
-    <div id="list-cart">
-        <h3>Giỏ hàng</h3>
-        @if(Cart::count() >= 1)
-        <form>
-            <table class="table table-bordered .table-responsive text-center">
-                <tr class="active">
-                    <td width="11.111%">Ảnh mô tả</td>
-                    <td width="22.222%">Tên sản phẩm</td>
-                    <td width="22.222%">Số lượng</td>
-                    <td width="16.6665%">Đơn giá</td>
-                    <td width="16.6665%">Thành tiền</td>
-                    <td width="11.112%">Xóa</td>
-                </tr>
-                @foreach($product as $prod)
-                <tr>
-                    <td><img width="200px" class="img-responsive" src="{{asset('../storage/app/avatar/'.$prod->options->img)}}"></td>
-                    <td>{{$prod->name}}</td>
-                    <td>
-                        <div class="form-group">
-                            <input class="form-control" type="number" value="{{$prod->qty}}" onchange="updateCart(this.value,'{{$prod->rowId}}')">
-                        </div>
-                    </td>
-                    <td><span class="price">{{number_format($prod->price,0,',','.')}} đ</span></td>
-                    <td><span class="price">{{number_format($prod->qty*$prod->price,0,',','.')}} đ</span></td>
-                    <td><a href="{{asset('cart/delete/'.$prod->rowId)}}">Xóa</a></td>
-                </tr>
-                @endforeach
-            </table>
-            <div class="row" id="total-price">
-                <div class="col-md-6 col-sm-12 col-xs-12">										
-                    Tổng thanh toán: <span class="total-price">{{$total}} đ</span>
 
-                </div>
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                    <a href="{{asset('/')}}" class="my-btn btn">Mua tiếp</a>
-                    <a href="#" class="my-btn btn">Cập nhật</a>
-                    <a href="{{asset('cart/delete/all')}}" class="my-btn btn" >Xóa giỏ hàng</a>
-                </div>
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_6.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{asset('/')}}">Home</a></span> <span>Cart</span></p>
+                <h1 class="mb-0 bread">Giỏ Hàng</h1>
             </div>
-        </form>             	                	
+        </div>
     </div>
-
-    <div id="xac-nhan">
-        <h3>Xác nhận mua hàng</h3>
-        <form>
-            <div class="form-group">
-                <label for="email">Email address:</label>
-                <input required type="email" class="form-control" id="email" name="email">
-            </div>
-            <div class="form-group">
-                <label for="name">Họ và tên:</label>
-                <input required type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="form-group">
-                <label for="phone">Số điện thoại:</label>
-                <input required type="number" class="form-control" id="phone" name="phone">
-            </div>
-            <div class="form-group">
-                <label for="add">Địa chỉ:</label>
-                <input required type="text" class="form-control" id="add" name="add">
-            </div>
-            <div class="form-group text-right">
-                <button type="submit" class="btn btn-default" style="cursor: pointer;">Thực hiện đơn hàng</button>
-            </div>
-        </form>
-    </div>
-    @else
-    @endif
 </div>
+@if(Cart::count() >= 1)
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="cart-list">
+                    <form>
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <th></th>
+                                <th>Ảnh mô tả</th>
+                                <th>Sản Phẩm</th>
+                                <th>Giá</th>
+                                <th>Số Lượng</th>
+                                <th>Thành Tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($product as $prod)
+                            <tr class="text-center">
+                                <td class="product-remove"><a href="{{asset('cart/delete/'.$prod->rowId)}}"><span class="ion-ios-close"></span></a></td>
 
+                                <td class="image-prod"><div class="img" style="background-image:url({{asset('../storage/app/avatar/'.$prod->options->img)}});"></div></td>
+
+                                <td class="product-name">
+                                    <h3>{{$prod->name}}</h3>
+                                </td>
+
+                                <td class="price">{{number_format($prod->price,0,',','.')}} đ</td>
+
+                                <td class="quantity">
+                                    <div class="input-group mb-3">
+                                        <input type="number" value="{{$prod->qty}}" onchange="updateCart(this.value,'{{$prod->rowId}}')" class="quantity form-control input-number">
+                                    </div>
+                                </td>
+
+                                <td class="total">{{number_format($prod->qty*$prod->price,0,',','.')}} đ</td>
+                            </tr><!-- END TR-->
+                            @endforeach
+                        </tbody>
+                    </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-start">
+            <div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>Hóa đơn</h3>
+                    <p class="d-flex">
+                        <span>Đơn hàng</span>
+                        <span>{{Cart::subtotal()}} đ</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Thuế</span>
+                        <span>{{Cart::tax()}} đ</span>
+                    </p>
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>Tổng hóa đơn</span>
+                        <span>{{$total}} đ</span>
+                    </p>
+                </div>
+                <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Thanh toán</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 @stop

@@ -1,42 +1,410 @@
 @extends('frontend.master')
-@section('title', 'Home')	
+@section('title', 'Trang Chủ')	
 @section('main')
 
-<div class="products">
-    <div class="col-md-12 text-center"><h1 style="color: orange;">SẢN PHẨM NỔI BẬT</h1></div>
-    <div class="product-list row">
-        @foreach($featuredList as $featured)			
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="my-list">
-                <img src="{{asset('/../storage/app/avatar/'.$featured->prod_img)}}" height="300px" width="500px" class="img-thumbnail"/>
-                <h3>{{$featured->prod_name}}</h3>
-                <span>{{number_format($featured->prod_price,0,',','.')}}</span>
-                <div class="offer">Extra 5% Off. Cart value Rs 500</div>
-                <div class="detail">
-                    <img src="{{asset('/../storage/app/avatar/'.$featured->prod_img)}}" class="img-thumbnail"/>
-                    <a href="{{asset('cart/add/'.$featured->prod_id)}}" class="btn btn-info">Đặt hàng online</a>
-                    <a href="{{asset('detail/'.$featured->prod_id.'/'.$featured->prod_slug.'.html')}}" class="btn btn-info">Xem chi tiết</a>
+<section id="home-section" class="hero">
+    <div class="home-slider owl-carousel">
+        <div class="slider-item js-fullheight">
+            <div class="overlay"></div>
+            <div class="container-fluid p-0">
+                <div class="row d-md-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
+                    <img class="one-third order-md-last img-fluid" src="images/01_Xperia-1_Primary-product-image_Black-e776e241f1d48b55ad6e630f862253b6.png" >
+                    <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                        <div class="text">
+                            <span class="subheading">#New Arrival</span>
+                            <div class="horizontal">
+                                <h1 class="mb-4 mt-3">Sony Xperia 8</h1>
+                                <p class="mb-4">Sony tung Xperia 8 giá 500 USD, trung thành với màn hình siêu dài.</p>
+
+                                <p><a href="https://news.zing.vn/sony-tung-xperia-8-gia-500-usd-trung-thanh-voi-man-hinh-sieu-dai-post998694.html" class="btn-custom">Khám phá ngay</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>	
-        @endforeach   
-    </div>    
-</div>
-<hr><hr>
-
-<div class="products">
-    <div class="col-md-12 text-center"><h1 style="color: orange;">SẢN PHẨM MỚI</h1></div>
-    <div class="product-list row">
-        @foreach($newList as $new)
-        <div class="product-item col-md-3 col-sm-6 col-xs-12">
-            <a href="#"><img src="{{asset('/../storage/app/avatar/'.$new->prod_img)}}" class="img-thumbnail"></a>
-            <p><a href="#">{{$new->prod_name}}</a></p>
-            <p class="price">{{number_format($new->prod_price,0,',','.')}}</p>	  
-            <div class="marsk">
-                <a href="{{asset('detail/'.$new->prod_id.'/'.$new->prod_slug.'.html')}}">Xem chi tiết</a>
-            </div>                      	                        
         </div>
-        @endforeach
-    </div>    
-</div>
+
+        <div class="slider-item js-fullheight">
+            <div class="overlay"></div>
+            <div class="container-fluid p-0">
+                <div class="row d-flex no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
+                    <img class="one-third order-md-last img-fluid" src="images/samsung-galaxy-s10-ceramic-black-side-vo3.png" alt="">
+                    <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                        <div class="text">
+                            <span class="subheading">#New Arrival</span>
+                            <div class="horizontal">
+                                <h1 class="mb-4 mt-3">Galaxy S10</h1>
+                                <p class="mb-4">Galaxy S10 5G sẽ có ‘Face ID’ khi được cập nhật Android 10.</p>
+
+                                <p><a href="https://www.thegioididong.com/tin-tuc/galaxy-s10-5g-se-co-face-id-khi-duoc-cap-nhat-android-10-1216795" class="btn-custom">Khám phá ngay</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container">
+        <div class="row no-gutters ftco-services">
+            <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services p-4 py-md-5">
+                    <div class="icon d-flex justify-content-center align-items-center mb-4">
+                        <span class="flaticon-bag"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Free Shipping</h3>
+                        <p>Miễn phí vận chuyển phạm vi cả nước.</p>
+                    </div>
+                </div>      
+            </div>
+            <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services p-4 py-md-5">
+                    <div class="icon d-flex justify-content-center align-items-center mb-4">
+                        <span class="flaticon-customer-service"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Support Customer</h3>
+                        <p>Tư vấn nhiệt tình 24/7.</p>
+                    </div>
+                </div>    
+            </div>
+            <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services p-4 py-md-5">
+                    <div class="icon d-flex justify-content-center align-items-center mb-4">
+                        <span class="flaticon-payment-security"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Secure Payments</h3>
+                        <p>Thanh toán an toàn.</p>
+                    </div>
+                </div>      
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <h2 class="mb-4">Sản phẩm mới nhất</h2>
+                <p>Luôn cập nhật những xu hướng mới nhất</p>
+            </div>
+        </div>   		
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach($newList as $featured)
+            <div class="col-sm-12 col-md-6 col-lg-3 ftco-animate d-flex">
+                <div class="product d-flex flex-column">
+                    <a href="{{asset('detail/'.$featured->prod_id.'/'.$featured->prod_slug.'.html')}}" class="img-prod"><img class="img-fluid" src="{{asset('/../storage/app/avatar/'.$featured->prod_img)}}" alt="Colorlib Template">
+                        <div class="overlay"></div>
+                    </a>
+                    <div class="text py-3 pb-4 px-3">
+                        <div class="d-flex">
+                            <div class="cat">
+                                <span>Lifestyle</span>
+                            </div>
+                            <div class="rating">
+                                <p class="text-right mb-0">
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <h3><a href="#">{{$featured->prod_name}}</a></h3>
+                        <div class="pricing">
+                            <p class="price"><span>{{number_format($featured->prod_price,0,',','.')}}</span></p>
+                        </div>
+                        <p class="bottom-area d-flex px-3">
+                            <a href="{{asset('cart/add/'.$featured->prod_id)}}" class="add-to-cart text-center py-2 mr-1"><span>Thêm vào giỏ <i class="ion-ios-add ml-1"></i></span></a>
+                            <a href="{{asset('detail/'.$featured->prod_id.'/'.$featured->prod_slug.'.html')}}" class="buy-now text-center py-2">Xem chi tiết<span><i class="ion-ios-search ml-1"></i></span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @endforeach 	
+        </div>
+    </div>
+</section>
+
+
+
+<section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-lg-4">
+                <div class="choose-wrap divider-one img p-5 d-flex align-items-end" style="background-image: url(images/choose-1.jpg);">
+
+                    <div class="text text-center text-white px-2">
+                        <span class="subheading">Men's Shoes</span>
+                        <h2>Men's Collection</h2>
+                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                        <p><a href="#" class="btn btn-black px-3 py-2">Shop now</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row no-gutters choose-wrap divider-two align-items-stretch">
+                    <div class="col-md-12">
+                        <div class="choose-wrap full-wrap img align-self-stretch d-flex align-item-center justify-content-end" style="background-image: url(images/choose-2.jpg);">
+                            <div class="col-md-7 d-flex align-items-center">
+                                <div class="text text-white px-5">
+                                    <span class="subheading">Women's Shoes</span>
+                                    <h2>Women's Collection</h2>
+                                    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                                    <p><a href="#" class="btn btn-black px-3 py-2">Shop now</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row no-gutters">
+                            <div class="col-md-6">
+                                <div class="choose-wrap wrap img align-self-stretch bg-light d-flex align-items-center">
+                                    <div class="text text-center px-5">
+                                        <span class="subheading">Summer Sale</span>
+                                        <h2>Extra 50% Off</h2>
+                                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                                        <p><a href="#" class="btn btn-black px-3 py-2">Shop now</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="choose-wrap wrap img align-self-stretch d-flex align-items-center" style="background-image: url(images/choose-3.jpg);">
+                                    <div class="text text-center text-white px-5">
+                                        <span class="subheading">Shoes</span>
+                                        <h2>Best Sellers</h2>
+                                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                                        <p><a href="#" class="btn btn-black px-3 py-2">Shop now</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-deal bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="images/prod-1.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-6">
+                <div class="heading-section heading-section-white">
+                    <span class="subheading">Deal of the month</span>
+                    <h2 class="mb-3">Deal of the month</h2>
+                </div>
+                <div id="timer" class="d-flex mb-4">
+                    <div class="time" id="days"></div>
+                    <div class="time pl-4" id="hours"></div>
+                    <div class="time pl-4" id="minutes"></div>
+                    <div class="time pl-4" id="seconds"></div>
+                </div>
+                <div class="text-deal">
+                    <h2><a href="#">Nike Free RN 2019 iD</a></h2>
+                    <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
+                    <ul class="thumb-deal d-flex mt-4">
+                        <li class="img" style="background-image: url(images/product-6.png);"></li>
+                        <li class="img" style="background-image: url(images/product-2.png);"></li>
+                        <li class="img" style="background-image: url(images/product-4.png);"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section testimony-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="services-flow">
+                    <div class="services-2 p-4 d-flex ftco-animate">
+                        <div class="icon">
+                            <span class="flaticon-bag"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Free Shipping</h3>
+                            <p class="mb-0">Miễn phí vận chuyển, áp dụng mọi tỉnh thành trên cả nước.</p>
+                        </div>
+                    </div>
+                    <div class="services-2 p-4 d-flex ftco-animate">
+                        <div class="icon">
+                            <span class="flaticon-heart-box"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Valuable Gifts</h3>
+                            <p class="mb-0">Tặng kèm đầy đủ phụ kiện, kiểm tra hàng trước khi nhận.</p>
+                        </div>
+                    </div>
+                    <div class="services-2 p-4 d-flex ftco-animate">
+                        <div class="icon">
+                            <span class="flaticon-payment-security"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Secure Payments</h3>
+                            <p class="mb-0">Áp dụng mọi phương thức thanh toán, hoàn trả.</p>
+                        </div>
+                    </div>
+                    <div class="services-2 p-4 d-flex ftco-animate">
+                        <div class="icon">
+                            <span class="flaticon-customer-service"></span>
+                        </div>
+                        <div class="text">
+                            <h3>All Day Support</h3>
+                            <p class="mb-0">Tư vấn, hỗ trợ khách hàng mọi lúc, mọi nơi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="heading-section ftco-animate mb-5">
+                    <h2 class="mb-4">Our satisfied customer says</h2>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+                </div>
+                <div class="carousel-testimony owl-carousel">
+                    <div class="item">
+                        <div class="testimony-wrap">
+                            <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">Marketing Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap">
+                            <div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">Interface Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap">
+                            <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">UI Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap">
+                            <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">Web Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap">
+                            <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">System Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-gallery">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 heading-section text-center mb-4 ftco-animate">
+                <h2 class="mb-4">Follow Us On Instagram</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid px-0">
+        <div class="row no-gutters">
+            <div class="col-md-4 col-lg-2 ftco-animate">
+                <a href="images/gallery-1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-1.jpg);">
+                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-lg-2 ftco-animate">
+                <a href="images/gallery-2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-2.jpg);">
+                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-lg-2 ftco-animate">
+                <a href="images/gallery-3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-3.jpg);">
+                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-lg-2 ftco-animate">
+                <a href="images/gallery-4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-4.jpg);">
+                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-lg-2 ftco-animate">
+                <a href="images/gallery-5.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-5.jpg);">
+                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 col-lg-2 ftco-animate">
+                <a href="images/gallery-6.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-6.jpg);">
+                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
 @stop

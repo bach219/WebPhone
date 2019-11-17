@@ -6,23 +6,43 @@ use Illuminate\Http\Request;
 use App\Model\Product;
 use App\Model\Category;
 use App\Model\Comment;
+use Illuminate\Support\Facades\DB;
 class FrontendController extends Controller
 {
     //
     public function getHome(){
-    	$data['featuredList'] = Product::where('prod_featured',1)
-    	                                 ->orderBy('prod_id','asc')
-    	                                 ->get();
     	$data['newList'] = Product::orderBy('prod_id','desc')
-    	                            ->take(10)
+    	                            ->take(8)
     	                            ->get();
     	$data['categories'] = Category::all();
     	return view('frontend.home',$data);
     }
 
+    public function getShop(){
+    	$data['featuredList'] = Product::where('prod_featured',1)
+    	                                 ->orderBy('prod_id','asc')
+    	                                 ->paginate(12);
+    	$data['categories'] = Category::all();
+    	return view('frontend.shop',$data);
+    }
+
+    public function getContact(){
+		return view('frontend.contact');
+	}
+
+    public function getBlog(){
+		return view('frontend.blog');
+	}
+
+    public function getAbout(){
+		return view('frontend.about');
+	}
+
     public function getDetail($id){
     	$data['detail'] = Product::find($id);
-    	$data['comments'] = Comment::where('com_product',$id)->get();
+		$data['comments'] = Comment::where('com_product',$id)->get();
+		$data['count'] = DB::table('vp_comment')->where('com_product','=',$id)
+		                                        ->count();
     	return view('frontend.details',$data);
     }
 
@@ -47,8 +67,12 @@ class FrontendController extends Controller
     public function getSearch(Request $request){
         $result = $request->result;
         $result = str_replace(' ', '%', $result);
-        $data['product'] = Product::where('prod_name','like','%'.$result.'%')->get();
-        $data['search'] = $result;
+        $data['product'] = Product::where('prod_name', 'like', '%'.$result.'%')
+												   ->join('vp_categories', 'vp_products.prod_cate', '=', 'vp_categories.cate_id')
+												   ->orWhere('vp_categories.cate_name', 'like', '%'.$result.'%')
+		                                           ->paginate(12);
+
+		$data['search'] = $result;
         return view('frontend.search', $data);
     }
 

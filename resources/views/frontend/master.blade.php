@@ -1,216 +1,184 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <base href={{asset('../public/layout/frontend')}}/">
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">	
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title>Bach's Shop - @yield('title')</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/home.css">
-        <link rel="stylesheet" href="css/details.css">
-        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            #footer-t, #footer-b{
-                background-image: linear-gradient(to right, #636365 , black);
-            }
-            #cart a:last-child{
-                margin-left: 70px;
-                color: #ff6600;
-            }	
-            img{max-width:100%;}
-            *{transition: all .5s ease;-moz-transition: all .5s ease;-webkit-transition: all .5s ease}
-            .my-list {
-                width: 100%;
-                height: 380px;
-                padding: 10px;
-                border: 1px solid #f5efef;
-                float: left;
-                margin: 15px 0;
-                border-radius: 5px;
-                box-shadow: 2px 3px 0px #e4d8d8;
-                position:relative;
-                overflow:hidden;
-            }
-            .my-list h3{
-                text-align: left;
-                font-size: 14px;
-                font-weight: 500;
-                line-height: 21px;
-                margin: 0px;
-                padding: 0px;
-                border-bottom: 1px solid #ccc4c4;
-                margin-bottom: 5px;
-                padding-bottom: 5px;
-            }
-            .my-list span{float:left;font-weight: bold;}
-            .my-list span:last-child{float:right;}
-            .my-list .offer{
-                width: 100%;
-                float: left;
-                margin: 5px 0;
-                border-top: 1px solid #ccc4c4;
-                margin-top: 5px;
-                padding-top: 5px;
-                color: #afadad;
-            }
-            .detail {
-                position: absolute;
-                top: -100%;
-                left: 0;
-                text-align: center;
-                background: #fff;height: 100%;width:100%;
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-            }
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
-            .my-list:hover .detail{top:0;}
-        </style>
-        <script type="text/javascript">
-            $(function () {
-                var pull = $('#pull');
-                menu = $('nav ul');
-                menuHeight = menu.height();
+        <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.css">
 
-                $(pull).on('click', function (e) {
-                    e.preventDefault();
-                    menu.slideToggle();
-                });
-            });
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
 
-            $(window).resize(function () {
-                var w = $(window).width();
-                if (w > 320 && menu.is(':hidden')) {
-                    menu.removeAttr('style');
-                }
-            });
-        </script>
+        <link rel="stylesheet" href="css/aos.css">
+
+        <link rel="stylesheet" href="css/ionicons.min.css">
+
+        <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+        <link rel="stylesheet" href="css/flaticon.css">
+        <link rel="stylesheet" href="css/icomoon.css">
+        <link rel="stylesheet" href="css/style.css">                                        
     </head>
-    <body>    
-        <!-- header -->
-        <header id="header">
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <body class="goto-here">
+        <div class="py-1 bg-black">
+            <div class="container">
+                <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+                    <div class="col-lg-12 d-block">
+                        <div class="row d-flex">
+                            <div class="col-md pr-4 d-flex topper align-items-center">
+                                <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                                <span class="text">+ 0333148314</span>
+                            </div>
+                            <div class="col-md pr-4 d-flex topper align-items-center">
+                                <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+                                <span class="text">bach.nguyen@savvycomsoftware.com</span>
+                            </div>
+                            <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+                                <span class="text">3-5 Business days delivery &amp; Free Returns</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+            <div class="container">
                 <a class="navbar-brand" href="{{asset('/')}}">Bach's Shop</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{asset('/')}}">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Danh mục sản phẩm
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                @foreach($categories as $cate)
-                                <a class="dropdown-item" href="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}">{{$cate->cate_name}}</a>
-                                @endforeach
+
+                <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a href="{{asset('/')}}" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="{{asset('shop')}}" class="nav-link">Shop</a></li>                          
+                        <li class="nav-item"><a href="{{asset('about')}}" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="{{asset('blog')}}" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="{{asset('contact')}}" class="nav-link">Contact</a></li>
+                        <li class="nav-item cta cta-colored "><a href="{{asset('cart/show')}}" class="nav-link"><span class="icon-shopping_cart"></span>[{{Cart::count()}}]</a></li>
+                        <li>                                                                                                                       
+                        <form class="search-form" method="get"  accept-charset="utf-8" action="{{asset('search/')}}" >
+                            <div class="form-group" style="height: 70%">
+                                <span class="icon ion-ios-search"></span>
+                                <input type="text" class="form-control" placeholder="Tìm kiếm" name="result" id="myInput">
                             </div>
-                        </li>
+                        </form> 
+                        </li>                                                                                                                   
                     </ul>
-                    <form class="form-inline mt-2 mt-md-0" method="get"  accept-charset="utf-8" action="{{asset('search/')}}">
-                        <input class="form-control mr-sm-2" type="text" name="result" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>		
-                    <div id="cart" class="col-md-2 col-sm-12 col-xs-12" class="img-fluid">
-                        <a class="display" href="{{asset('cart/show')}}">Giỏ hàng</a>
-                        <a href="{{asset('cart/show')}}">{{Cart::count()}}</a>				    
+                </div>
+            </div>
+        </nav>
+        <!-- END nav -->
+
+
+
+        @yield('main')
+        <!-- end main -->
+
+        <footer class="ftco-footer ftco-section">
+            <div class="container">
+                <div class="row">
+                    <div class="mouse">
+                        <a href="#" class="mouse-icon">
+                            <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                        </a>
                     </div>
                 </div>
-            </nav>
-        </header>
-        <div style="width: 1000px; height: 100px;"></div>
-
-        <!-- /header -->
-        <!-- endheader -->
-        <!-- main -->
-        <section id="body">
-            <div class="container">
-
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src="img/home/slide-1.png" style="width: 100px; height: 300px;" alt="First slide">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>...</h5>
-                                <p>...</p>
+                <div class="row mb-5">
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">Bach's Shop</h2>
+                            <p>Always live in style and stay fresh.<br>Peace!</p>
+                            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                                <li class="ftco-animate"><a href="#" target="_blank"><span class="icon-skype"></span></a></li>
+                                <li class="ftco-animate"><a href="https://www.facebook.com/profile.php?id=100005432081114" target="_blank"><span class="icon-facebook"></span></a></li>
+                                <li class="ftco-animate"><a href="https://www.instagram.com/iam_bach/" target="_blank"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4 ml-md-5">
+                            <h2 class="ftco-heading-2">Menu</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="py-2 d-block">Shop</a></li>
+                                <li><a href="#" class="py-2 d-block">About</a></li>
+                                <li><a href="#" class="py-2 d-block">Journal</a></li>
+                                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">Help</h2>
+                            <div class="d-flex">
+                                <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+                                    <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
+                                    <li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
+                                    <li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
+                                    <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                                </ul>
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="py-2 d-block">FAQs</a></li>
+                                    <li><a href="#" class="py-2 d-block">Contact</a></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="img/home/slide-2.png" style="width: 100px; height: 300px;" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="img/home/slide-3.png" style="width: 100px; height: 300px;" alt="Third slide">
+                    </div>
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">Have a Questions?</h2>
+                            <div class="block-23 mb-3">
+                                <ul>
+                                    <li><span class="icon icon-map-marker"></span><span class="text">141 đường Chiến Thắng, Tân Triều, Thanh Trì, Hà Nội</span></li>
+                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+ 0333148314</span></a></li>
+                                    <li><a><span class="icon icon-envelope"></span><span class="text">bach.nguyen@savvycomsoftware.com</span></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
-                <br><br>
                 <div class="row">
-                    @yield('main')
-                    <!-- end main -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- endmain -->
-    <!-- footer -->
-    <footer id="footer">			
-        <div id="footer-t">
-            <div class="container">
-                <div class="row">				
-                    <div id="logo-f" class="col-md-3 col-sm-12 col-xs-12 text-center">						
-                        <a href="{{asset('/')}}"><img style="width: 250px; height: 90px" src="{{asset('layout/frontend/img/home/paradox.jpg')}}"></a>		
-                    </div>
-                    <div id="about" class="col-md-3 col-sm-12 col-xs-12">
-                        <h3>About us</h3>
-                        <p class="text-justify">Nguyen Van Bach</p>
-                    </div>
-                    <div id="hotline" class="col-md-3 col-sm-12 col-xs-12">
-                        <h3>Hotline</h3>
-                        <p>Phone Sale: (+84) 0333148314</p>
-                        <p>Email: cuavip1999@gmial.com</p>
-                    </div>
-                    <div id="contact" class="col-md-3 col-sm-12 col-xs-12">
-                        <h3>Contact Us</h3>
-                        <p>Address 1: B8A Võ Văn Dũng - Hoàng Cầu Đống Đa - Hà Nội</p>
-                        <p>Address 2: Số 25 Ngõ 178/71 - Tây Sơn Đống Đa - Hà Nội</p>
-                    </div>
-                </div>				
-            </div>
-            <div id="footer-b">				
-                <div class="container">
-                    <div class="row">
-                        <div id="footer-b-l" class="col-md-6 col-sm-12 col-xs-12 text-center">
-                            <p>Học viện Ky thuat Mat Ma - www.vietpro.edu.vn</p>
-                        </div>
-                        <div id="footer-b-r" class="col-md-6 col-sm-12 col-xs-12 text-center">
-                            <p>© 2017 Vietpro Academy. All Rights Reserved</p>
-                        </div>
+                    <div class="col-md-12 text-center">
+
+                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> , Savvycom. All rights reserved. <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://www.facebook.com/profile.php?id=100005432081114" target="_blank">Nguyễn Bachs</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
                     </div>
                 </div>
-                <div id="scroll">
-                    <a href="{{asset('/')}}"><img src="img/home/scroll.png"></a>
-                </div>	
             </div>
-        </div>
-    </footer>
-    <!-- endfooter -->
-</body>
+        </footer>
+
+
+
+        <!-- loader -->
+        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/scrollax.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="js/google-map.js"></script>
+        <script src="js/main.js"></script>              
+        @stack('scripts')  
+    </body>
 </html>

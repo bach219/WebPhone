@@ -16,6 +16,7 @@
 					<div class="panel-body">
 						<form method="post" enctype="multipart/form-data">
 							@csrf
+							@include('errors.note')
 							<div class="row" style="margin-bottom:40px">
 								<div class="col-xs-8">
 									<div class="form-group" >

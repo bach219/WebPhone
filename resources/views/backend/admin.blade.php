@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title', 'Product')	
+@section('title', 'User')	
 @section('main')
 <div class="panel panel-primary">
 					<div class="panel-heading">Danh sách nhân viên</div>
@@ -8,16 +8,15 @@
 						@csrf
 						<div class="bootstrap-table">
 							<div class="table-responsive">
-                            <a href="{{asset('admin/product/add')}}" class="btn btn-primary">Thêm sản phẩm</a><br><br>
+                            <a href="{{asset('admin/user/add')}}" class="btn btn-primary">Thêm sản phẩm</a><br><br>
         	<!-- <div class="alert alert-success">Added user success!</div> -->
-        	<table class="table table-bordered display" id="tbl">
+        	<table class="table table-bordered display" id="tbl" width="100%">
                 <thead>
 				<tr class="bg-primary">
-                	<td width="5%">ID</td>
-                    <td width="25%">Email</td>
-                    <td width="5%">Level</td>
-                    <td width="5%">Edit</td>
-                    <td width="5%">Delete</td>
+                	<td>ID</td>
+                    <td>Email</td>
+                    <td>Level</td>
+                    <td width="20%">Tùy chọn</td>
                 </tr>
                 </thead>
             	<tbody>
@@ -26,8 +25,10 @@
                 	<td>{{$user->id}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->level}}</td>
-                    <td><a href="#">Edit</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <td>
+		                <a href="{{asset('admin/user/edit/'.$user->id)}}" class="btn btn-warning"><i class="fa fa-pencil glyphicon glyphicon-edit" aria-hidden="true"></i> Sửa</a>
+		                <a href="{{asset('admin/user/delete/'.$user->id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger"><i class="fa fa-trash glyphicon glyphicon-trash" aria-hidden="true"></i> Xóa</a>
+					</td>
                 </tr>
                 @endforeach
                 </tbody>
